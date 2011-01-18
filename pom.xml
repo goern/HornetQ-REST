@@ -5,7 +5,7 @@
 	<artifactId>hornetq-rest</artifactId>
 	<packaging>war</packaging>
 	<name>HornetQ REST WAR</name>
-	<version>0.0.1</version>
+	<version>0.1.0</version>
 
 	<properties>
 		<resteasy.version>2.1.0.GA</resteasy.version>
@@ -65,7 +65,7 @@
 			<artifactId>resteasy-jaxb-provider</artifactId>
 			<version>${resteasy.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
@@ -91,7 +91,7 @@
 			<version>1.5.8</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -117,6 +117,14 @@
 				<artifactId>maven-install-plugin</artifactId>
 				<configuration>
 					<createChecksum>true</createChecksum>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<warName>hornetq-rest</warName>
 				</configuration>
 			</plugin>
 
