@@ -7,9 +7,15 @@
 	<name>HornetQ REST WAR</name>
 	<version>0.1.0</version>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<resteasy.version>2.1.0.GA</resteasy.version>
+		<hornetq.version>2.2.0.QA-10117</hornetq.version>
+	</properties>
+
 	<description>This is a WAR file to put everything in JBoss-6 to expose some HornetQ Topics and Queues via REST.
 	</description>
-	
+
 	<developers>
 		<developer>
 			<id>goern</id>
@@ -29,11 +35,6 @@
 		<name>#B4mad.Net</name>
 		<url>http://b4mad.net/</url>
 	</organization>
-
-	<properties>
-		<resteasy.version>2.1.0.GA</resteasy.version>
-		<hornetq.version>2.2.0.QA-10117</hornetq.version>
-	</properties>
 
 	<repositories>
 		<repository>
@@ -128,7 +129,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.1</version>
+				<version>2.3.2</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
@@ -138,6 +139,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-install-plugin</artifactId>
+				<version>2.3.1</version>
 				<configuration>
 					<createChecksum>true</createChecksum>
 				</configuration>
@@ -146,6 +148,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
 				<configuration>
 					<warName>hornetq-rest</warName>
 				</configuration>
@@ -154,6 +157,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.7</version>
 				<configuration>
 					<minmemory>128m</minmemory>
 					<maxmemory>1024m</maxmemory>
@@ -170,13 +174,27 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>
-					maven-project-info-reports-plugin
-				</artifactId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.3.1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.7.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>1.2</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependency-updates-report</report>
+							<report>plugin-updates-report</report>
+							<report>property-updates-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
 		</plugins>
 	</reporting>
