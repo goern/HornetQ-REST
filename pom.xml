@@ -7,6 +7,29 @@
 	<name>HornetQ REST WAR</name>
 	<version>0.1.0</version>
 
+	<description>This is a WAR file to put everything in JBoss-6 to expose some HornetQ Topics and Queues via REST.
+	</description>
+	
+	<developers>
+		<developer>
+			<id>goern</id>
+			<name>Christoph Görn</name>
+			<email>goern@b4mad.net</email>
+			<url>http://b4mad.net/goern</url>
+			<organization>#B4mad.Net - erd/G/eschoss</organization>
+			<organizationUrl>http://b4mad.net/erdGeschoss/</organizationUrl>
+			<timezone>Europe/Berlin</timezone>
+			<roles>
+				<role>Developer</role>
+				<role>Architect</role>
+			</roles>
+		</developer>
+	</developers>
+	<organization>
+		<name>#B4mad.Net</name>
+		<url>http://b4mad.net/</url>
+	</organization>
+
 	<properties>
 		<resteasy.version>2.1.0.GA</resteasy.version>
 		<hornetq.version>2.2.0.QA-10117</hornetq.version>
