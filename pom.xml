@@ -5,35 +5,61 @@
 	<artifactId>hornetq-rest</artifactId>
 	<packaging>war</packaging>
 	<name>HornetQ REST WAR</name>
-	<version>0.0.1</version>
+	<version>0.1.0</version>
+
+	<description>This is a WAR file to put everything in JBoss-6 to expose some HornetQ Topics and Queues via REST.
+	</description>
+	
+	<developers>
+		<developer>
+			<id>goern</id>
+			<name>Christoph Görn</name>
+			<email>goern@b4mad.net</email>
+			<url>http://b4mad.net/goern</url>
+			<organization>#B4mad.Net - erd/G/eschoss</organization>
+			<organizationUrl>http://b4mad.net/erdGeschoss/</organizationUrl>
+			<timezone>Europe/Berlin</timezone>
+			<roles>
+				<role>Developer</role>
+				<role>Architect</role>
+			</roles>
+		</developer>
+	</developers>
+	<organization>
+		<name>#B4mad.Net</name>
+		<url>http://b4mad.net/</url>
+	</organization>
 
 	<properties>
-		<resteasy.version>2.0.1.GA</resteasy.version>
+		<resteasy.version>2.1.0.GA</resteasy.version>
 		<hornetq.version>2.2.0.QA-10117</hornetq.version>
 	</properties>
 
-   <repositories>
-       <repository>
-           <id>jboss</id>
-           <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-       </repository>
-   </repositories>
+	<repositories>
+		<repository>
+			<id>jboss</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.hornetq</groupId>
 			<artifactId>hornetq-core</artifactId>
 			<version>${hornetq.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hornetq</groupId>
 			<artifactId>hornetq-jms</artifactId>
 			<version>${hornetq.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.spec.javax.jms</groupId>
 			<artifactId>jboss-jms-api_1.1_spec</artifactId>
 			<version>1.0.0.Beta1</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.netty</groupId>
@@ -44,6 +70,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hornetq.rest</groupId>
@@ -54,11 +81,45 @@
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jaxrs</artifactId>
 			<version>${resteasy.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jaxb-provider</artifactId>
 			<version>${resteasy.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.stream</groupId>
+			<artifactId>sjsxp</artifactId>
+			<version>1.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.5.8</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.5.8</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.1</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -84,6 +145,14 @@
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<warName>hornetq-rest</warName>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<configuration>
 					<minmemory>128m</minmemory>
@@ -96,4 +165,19 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>
+					maven-project-info-reports-plugin
+				</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
