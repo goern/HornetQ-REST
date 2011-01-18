@@ -6,13 +6,62 @@
 	<packaging>war</packaging>
 	<name>HornetQ REST WAR</name>
 	<version>0.0.1</version>
-	
-	<repositories>
-		<repository>
-			<id>jboss</id>
-			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
-		</repository>
-	</repositories>
+
+	<properties>
+		<resteasy.version>2.0.1.GA</resteasy.version>
+		<hornetq.version>2.2.0.QA-10117</hornetq.version>
+	</properties>
+
+   <repositories>
+       <repository>
+           <id>jboss</id>
+           <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+       </repository>
+   </repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.hornetq</groupId>
+			<artifactId>hornetq-core</artifactId>
+			<version>${hornetq.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hornetq</groupId>
+			<artifactId>hornetq-jms</artifactId>
+			<version>${hornetq.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.jms</groupId>
+			<artifactId>jboss-jms-api_1.1_spec</artifactId>
+			<version>1.0.0.Beta1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.netty</groupId>
+			<artifactId>netty</artifactId>
+			<version>3.2.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hornetq.rest</groupId>
+			<artifactId>hornetq-rest</artifactId>
+			<version>1.0-beta-3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>${resteasy.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxb-provider</artifactId>
+			<version>${resteasy.version}</version>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -24,43 +73,27 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<configuration>
+					<createChecksum>true</createChecksum>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<minmemory>128m</minmemory>
+					<maxmemory>1024m</maxmemory>
+					<quiet>false</quiet>
+					<aggregate>true</aggregate>
+					<excludePackageNames>com.restfully.*:org.jboss.resteasy.examples.*:org.jboss.resteasy.tests.*
+					</excludePackageNames>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-	<dependencies>
-		<dependency>
-			<groupId>org.hornetq</groupId>
-			<artifactId>hornetq-core</artifactId>
-			<version>2.1.2.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.netty</groupId>
-			<artifactId>netty</artifactId>
-			<version>3.2.3.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hornetq</groupId>
-			<artifactId>hornetq-jms</artifactId>
-			<version>2.1.2.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.spec.javax.jms</groupId>
-			<artifactId>jboss-jms-api_1.1_spec</artifactId>
-			<version>1.0.0.Beta1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hornetq.rest</groupId>
-			<artifactId>hornetq-rest</artifactId>
-			<version>1.0-beta-3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jaxrs</artifactId>
-			<version>2.1.0.GA</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jaxb-provider</artifactId>
-			<version>2.0.0.GA</version>
-		</dependency>
-	</dependencies>
 </project>
