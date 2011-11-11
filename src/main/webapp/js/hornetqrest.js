@@ -21,7 +21,7 @@ function createXHR() {
 
 function initialize() {
 	var xhr = createXHR();
-	xhr.open("HEAD", "http://localhost:8080/hornetq-rest/topics/jms.topic.broadcast", true);
+	xhr.open("HEAD", "http://"+window.location.hostname+":8080/hornetq-rest/topics/jms.topic.broadcast", true);
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4) {
 			if (xhr.status == 200) {
