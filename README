@@ -1,3 +1,7 @@
+* Deploy
+
+ You know how to deploy to JBoss 7.0.2, don't you?!
+
 * Check
 
  Check if the Queue (and the REST Interface) got deployed correctly:
@@ -9,3 +13,7 @@
  So let's post some XML to out Queue:
 
  curl -v -X POST -d '<logentry/>' -H 'Accept: application/xml' -H 'Content-Type: application/xml' http://localhost:8080/hornetq-rest/queues/jms.queue.log/create
+
+* Visit
+
+ http://localhost:8080/hornetq-rest/ and see a javascript example working... open a few tabs with that URL
