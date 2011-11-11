@@ -1,7 +1,8 @@
 <configuration xmlns="urn:hornetq"
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                xsi:schemaLocation="urn:hornetq /schema/hornetq-jms.xsd">
-    <!--the connection factory used by the example-->
+
+    <!--the connection factory used -->
     <connection-factory name="ConnectionFactory">
         <connectors>
             <connector-ref connector-name="in-vm"/>
@@ -11,9 +12,12 @@
         </entries>
     </connection-factory>
 
-    <!--the queue used by the example-->
-    <queue name="orders">
-        <entry name="/queues/orders"/>
+    <!--the queues deployed by hornetq-rest -->
+    <queue name="log">
+        <entry name="/queue/log"/>
     </queue>
-
+    <!--the topics deployed by hornetq-rest -->
+    <topic name="broadcast">
+        <entry name="/topic/broadcast"/>
+    </topic>
 </configuration>

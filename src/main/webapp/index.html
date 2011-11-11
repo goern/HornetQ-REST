@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8>
+	<title>index</title>
+	<script src="js/jquery-1.7.min.js"></script>
+	<script src="js/hornetqrest.js"></script>
+</head>
+
+<body>
+<script type="text/javascript">
+
+var sender;
+var nextMessage;
+var subscriptions;
+var count = 0;
+var reconnect = true;
+
+function postMessage(message) {
+	var xhr = createXHR();
+	xhr.open("POST", sender, false);
+	xhr.setRequestHeader("Content-Type", "text/plain");
+	xhr.send(message);
+	if (xhr.status == 201) {
+		sender = xhr.getResponseHeader("msg-create-next");
+	} else {
+		document.getElementById("log-dev").innerHTML = "Failed to send message: " + sender;
+	}
+}
+
+initialize();
+setTimeout("receiveMessage()", 800);
+
+</script>
+<p>Hello HornetQ and REST</p>
+
+<p>please find a page where we receive messages <a href="broadcasts.html">here</a>.</p>
+
+<div id="input-div">
+	<form>
+		<input type='button' onclick='postMessage("... and here we go");' value='post'/>
+	</form>
+</div>
+
+<h2>Messages:</h2></p>
+<pre>
+	<div id="next"></div>
+</pre>
+
+<div id="log-div"></div>
+
+<div id="connection"></div>
+</body>
+</html>

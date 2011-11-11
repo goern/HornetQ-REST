@@ -5,15 +5,16 @@
 	<artifactId>hornetq-rest</artifactId>
 	<packaging>war</packaging>
 	<name>HornetQ REST WAR</name>
-	<version>0.1.0</version>
+	<version>0.2.0</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<resteasy.version>2.1.0.GA</resteasy.version>
-		<hornetq.version>2.2.0.QA-10117</hornetq.version>
+		<resteasy.version>2.2.1.GA</resteasy.version>
+		<hornetq.version>2.2.7.Final</hornetq.version>
+		<hornetqrest.version>2.2.2.Final</hornetqrest.version>
 	</properties>
 
-	<description>This is a WAR file to put everything in JBoss-6 to expose some HornetQ Topics and Queues via REST.
+	<description>This is a WAR file to put everything in JBoss AS7 (7.0.2 and up) to expose some HornetQ Topics and Queues via REST.
 	</description>
 
 	<developers>
@@ -48,80 +49,23 @@
 			<groupId>org.hornetq</groupId>
 			<artifactId>hornetq-core</artifactId>
 			<version>${hornetq.version}</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hornetq</groupId>
 			<artifactId>hornetq-jms</artifactId>
 			<version>${hornetq.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.spec.javax.jms</groupId>
-			<artifactId>jboss-jms-api_1.1_spec</artifactId>
-			<version>1.0.0.Beta1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.netty</groupId>
-			<artifactId>netty</artifactId>
-			<version>3.2.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hornetq.rest</groupId>
 			<artifactId>hornetq-rest</artifactId>
-			<version>1.0-beta-3</version>
+			<version>${hornetqrest.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jaxrs</artifactId>
-			<version>${resteasy.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jaxb-provider</artifactId>
-			<version>${resteasy.version}</version>
-		</dependency>
+          <groupId>org.jboss.netty</groupId>
+          <artifactId>netty</artifactId>
+          <version>3.2.0.Final</version>
+      </dependency>
 
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>2.2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.xml.stream</groupId>
-			<artifactId>sjsxp</artifactId>
-			<version>1.0.1</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.5.8</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.5.8</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.1</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<build>

@@ -2,8 +2,7 @@
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                xsi:schemaLocation="urn:hornetq /schema/hornetq-configuration.xsd">
 
-    <persistence-enabled>false</persistence-enabled>
-    <!-- Connectors -->
+    <persistence-enabled>true</persistence-enabled>
 
     <connectors>
         <connector name="in-vm">
@@ -17,10 +16,7 @@
         </acceptor>
     </acceptors>
 
-    <!-- Other config -->
-
     <security-settings>
-        <!--security for example queue-->
         <security-setting match="#">
             <permission type="createDurableQueue" roles="guest"/>
             <permission type="deleteDurableQueue" roles="guest"/>

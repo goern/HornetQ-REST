@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8>
+	<title>broadcasts</title>
+	<script src="js/jquery-1.7.min.js"></script>
+	<script src="js/hornetqrest.js"></script>
+</head>
+
+<body>
+<script type="text/javascript">
+
+var sender;
+var nextMessage;
+var subscriptions;
+var count = 0;
+var reconnect = true;
+
+initialize();
+setTimeout("receiveMessage()", 800);
+</script>
+
+<p>here, we will receive broadcasted messages...</p>
+<h2>Messages:</h2></p>
+<pre>
+	<div id="next"></div>
+</pre>
+
+<div id="log-div"></div>
+
+<div id="connection"></div>
+</body>
+</html>

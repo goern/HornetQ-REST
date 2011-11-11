@@ -1,0 +1,11 @@
+* Check
+
+ Check if the Queue (and the REST Interface) got deployed correctly:
+
+ curl -v -X GET -H 'Accept: application/xml' http://localhost:8080/hornetq-rest/queues/jms.queue.log
+
+* Post
+
+ So let's post some XML to out Queue:
+
+ curl -v -X POST -d '<logentry/>' -H 'Accept: application/xml' -H 'Content-Type: application/xml' http://localhost:8080/hornetq-rest/queues/jms.queue.log/create
